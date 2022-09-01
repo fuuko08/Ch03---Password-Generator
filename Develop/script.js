@@ -17,7 +17,7 @@ var enter;
 var generateBtn = document.querySelector("#generate");
 var allCharacters = "";
 var result = "";
-var myLength = criterias.length;
+var myLength = 0;
 
 // Function to choose Criterias
 
@@ -87,7 +87,7 @@ var generatePassword = function() {
     alert("Please choose a number from 8 to 128");
   } else {
     alert("Valid choice! Thank you!");
-    enter = criterias.length;
+    myLength = enter;
     console.log("enter value: " + enter);
   }
     alert("Please choose password criterias.");
@@ -95,8 +95,9 @@ var generatePassword = function() {
     console.log ("test " + chooseCriteria);
     alert("Generating your password...");
     findResult();
-    console.log ("what is my result " + findResult);
+    console.log ("what is my result " + findResult());
     alert ("Your password is " + result);
+    return result;
 }
 
 // Write password to the #password input

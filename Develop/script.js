@@ -66,10 +66,13 @@ var chooseCriteria = function() {
     alert("Please choose yes to at least one criteria");
   }
 console.log ("first function" + chooseCriteria);
+}
 
-for (var i = 0, n = allCharacters.length; i < myLength; i++) {
+function findResult() {
+  for (var i = 0, n = allCharacters.length; i < myLength; i++) {
   result += allCharacters.charAt(Math.floor(Math.random() * n)); 
 }
+console.log ("find result" + result); 
 return result;
 }
 
@@ -91,7 +94,8 @@ var generatePassword = function() {
     chooseCriteria();
     console.log ("test " + chooseCriteria);
     alert("Generating your password...");
-  
+    findResult();
+    console.log ("what is my result " + findResult);
     alert ("Your password is " + result);
 }
 

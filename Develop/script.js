@@ -73,7 +73,6 @@ function findResult() {
   result += allCharacters.charAt(Math.floor(Math.random() * n)); 
 }
 console.log ("find result" + result); 
-return result;
 }
 
 

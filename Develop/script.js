@@ -1,94 +1,99 @@
-// Assignment code here
-var passwordCriteria = {
+// Assignment Code Here
+var criterias = {
   length: "",
-  lowerCase: ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"],
-  upperCase: ["A", "B", "C, 'D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"],
-  number: [1, 2 , 3, 4, 5, 6, 7, 8, 9, 0],  
-  symbol: ['!', '@', '#', '$', '%', '^', '&', '*', '(', ')'],
+  lowerCase: "",
+  upperCase: "",
+  number: "",
+  symbol: "",
+}
+
+var dataList = {
+  dataLowerCase: "abcdefghijklmnopqrstuvwxyz",
+  dataUpperCase: "ABCDEFGHIJKLMNOPQRSTUVWXYZ",
+  dataNumber: "0123456789",
+  dataSymbol: "!#$%&'()*+,-./:;<=>?@[]^_`{|}~",
 }
 var enter;
-
-// Get references to the #generate element
 var generateBtn = document.querySelector("#generate");
+var allCharacters = "";
+var result = "";
+var myLength = criterias.length;
+
+// Function to choose Criterias
+
+var chooseCriteria = function() {
+  criterias.lowerCase = prompt("Do you want lower cases in your password? Answer Yes or No.");
+  if  (criterias.lowerCase === "yes") {
+    alert("You will have lower cases in  your password");
+    criterias.lowerCase = true;
+    allCharacters = dataList.dataLowerCase;
+  } else if (criterias.lowerCase === "no") {
+    alert("No lower case choosen.");
+    criterias.lowerCase = false;
+  }
+
+  criterias.upperCase = prompt("Do you want upper cases in your password? Answer Yes or No.");
+  if (criterias.upperCase === "yes") {
+    alert("You will have upper cases in your password");
+    criterias.upperCase = true;
+    allCharacters = allCharacters + dataList.upperCase;
+  } else if (criterias.upperCase === "no") {
+    alert("No upper cases choosen.");
+    criterias.upperCase = false;
+  }
+
+  criterias.number = prompt("Do you want numbers in your password? Answer Yes or No.");
+  if (criterias.number === "yes") {
+    alert("You will have numbers in your password");
+    criterias.number = true;
+    allCharacters = allCharacters + dataList.number;
+  } else if (criterias.number === "no") {
+    alert("No numbers choosen.");
+    criterias.number = false;
+  }
+
+  criterias.symbol = prompt("Do you want symbols in your password? Answer Yes or No.");
+  if (criterias.symbol === "yes") {
+    alert("You will have symbols in your password");
+    criterias.symbol = true;
+    allCharacters = allCharacters + dataList.symbol;
+  } else if (criterias.symbol === "no") {
+    alert("No symbol choosen.");
+    criterias.symbol = false;
+  }
+
+  if (!criterias.lowerCase && !criterias.upperCase && !criterias.number && !criterias.symbol) {
+    alert("Please choose yes to at least one criteria");
+  }
+console.log ("first function" + chooseCriteria);
+
+for (var i = 0, n = allCharacters.length; i < myLength; i++) {
+  result += allCharacters.charAt(Math.floor(Math.random() * n)); 
+}
+return result;
+}
 
 
-
-var chooseCriteria  = function() {
-  passwordCriteria.lowerCase = window.prompt("Do you want lower cases in your password? Yes or No?");
-  passwordCriteria.lowerCase = passwordCriteria.lowerCase.toLowerCase();
-  if (passwordCriteria.lowerCase === "yes") {
-    alert("You will have lower case.");
-    passwordCriteria.lowerCase = true;
-  } else if (passwordCriteria.lowerCase === "no") {
-    alert("No lower case.")
-    passwordCriteria.lowerCase = false;
-  }
-  passwordCriteria.upperCase = window.prompt("Do you want upper cases in your password? Yes or No?");
-  passwordCriteria.upperCase = passwordCriteria.upperCase.toLowerCase();
-  if (passwordCriteria.upperCase === "yes") {
-    alert("You will have upper case.")
-    passwordCriteria.upperCase = true;
-  } else if (passwordCriteria.upperCase === "no") {
-    alert("No upper case.")
-    passwordCriteria.upperCase = false;
-  }
-  passwordCriteria.number = window.prompt("Do you want number in your password? Yes or No?");
-  passwordCriteria.number = passwordCriteria.number.toLowerCase();
-  if (passwordCriteria.number === "yes") {
-    alert("You will have number.")
-    passwordCriteria.number = true;
-  } else if (passwordCriteria.number === "no") {
-    alert("No number.")
-    passwordCriteria.number = false;
-  }
-  passwordCriteria.symbol = window.prompt("Do you want symbol in your password? Yes or No?");
-  passwordCriteria.symbol = passwordCriteria.symbol.toLowerCase();
-  if (passwordCriteria.symbol === "yes") {
-    alert("You will have symbols.")
-    passwordCriteria.symbol = true;
-  } else if (passwordCriteria.symbol === "no") {
-    alert("No symbols.")
-    passwordCriteria.symbol = false;
-  } 
-  if (!passwordCriteria.lowerCase && !passwordCriteria.upperCase && !passwordCriteria.number && !passwordCriteria.symbol) {
-    alert("Please enter at least one character.");
-    chooseCriteria();
-  }
-}; 
+// function to enter password length
 
 var generatePassword = function() {
-  enter = parseInt(window.prompt("How many characters? Choose from 8 to 128"));
+  enter = parseInt(prompt("Please choose from 8 to 128 characters."));
   if (!enter) {
     alert("Please enter a number.");
-  } else  if (enter < 8 || enter > 128) {
-    alert("Please  choose from 8 to 128");
-  } else { 
-    alert("Valid choice!")
-   }
-   alert("Please choose Criterias.");
-   chooseCriteria();
-   alert("Making password...");
-
-var makePassword = function() {
-  let allCharacters = "";
-  if (passwordCriteria.lowerCase === true) {
-    allCharacters = lowerCase;
-  } if (passwordCriteria.lowerCase === true && passwordCriteria.upperCase === true) {
-    allCharacters = lowerCase + upperCase;
-  } if (passwordCriteria.lowerCase === true && passwordCriteria.upperCase === true && passwordCriteria.number === true) {
-    allCharacters = lowerCase + upperCase + number;
-  } if (passwordCriteria.lowerCase === true && passwordCriteria.upperCase === true && passwordCriteria.number === true && passwordCriteria.symbol === true) {
-    allCharacters = lowerCase + upperCase + number + symbol;
-  } 
-  var result = "";
-  for (var i = 0, n = allCharacters.length; i < passwordCriteria.length; i++) {
-    result += allCharacters.charAt(Math.floor(Math.random() * n));
+  } else if (enter < 8 || enter > 128) {
+    alert("Please choose a number from 8 to 128");
+  } else {
+    alert("Valid choice! Thank you!");
+    enter = criterias.length;
+    console.log("enter value: " + enter);
   }
-  alert("You password is " + result);
-  return result;
+    alert("Please choose password criterias.");
+    chooseCriteria();
+    console.log ("test " + chooseCriteria);
+    alert("Generating your password...");
+  
+    alert ("Your password is " + result);
 }
-makePassword();
-};
 
 // Write password to the #password input
 function writePassword() {

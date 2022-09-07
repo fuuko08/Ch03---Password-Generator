@@ -1,4 +1,5 @@
 # Ch03---Password-Generator
+I created an application that can randomly generate a password. The password would meet user's requirements regarding length, lowercases, uppercases, numbers and special characters. This application will run using HTML, CSS and Javascript. 
 
 ## User Story
 ```
@@ -24,5 +25,10 @@ THEN a password is generated that matches the selected criteria
 WHEN the password is generated
 THEN the password is either displayed in an alert or written to the page
 ```
+
+
 ## Mock Up
-![03-javascript-homework-demo](https://user-images.githubusercontent.com/108949883/188019686-d555f2ed-9a3e-462e-94b4-659c4f357734.png)
+<img width="1161" alt="Screen Shot 2022-09-06 at 10 38 53 PM" src="https://user-images.githubusercontent.com/108949883/188797968-ef6da805-61de-4b3c-90cb-ed466b7e6872.png">
+
+Deployed Link: https://fuuko08.github.io/Ch03---Password-Generator/
+Github Link: https://github.com/fuuko08/Ch03---Password-Generator
